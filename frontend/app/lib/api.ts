@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://task-management-system-1-pg6s.onrender.com";
 
 export const apiRequest = async (
     endpoint: string,
