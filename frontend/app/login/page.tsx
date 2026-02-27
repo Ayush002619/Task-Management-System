@@ -16,7 +16,7 @@ export default function LoginPage() {
         e.preventDefault();
 
         try {
-            const res = await apiRequest("http://localhost:8080/auth/login", {
+            const res = await apiRequest("https://task-management-system-1-pg6s.onrender.com/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

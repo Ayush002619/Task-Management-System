@@ -31,7 +31,7 @@ export default function DashboardPage() {
         const fetchTasks = async (page = 1) => {
             try {
                 const res = await apiRequest(
-                    `http://localhost:8080/tasks?page=${page}&limit=6`
+                    `https://task-management-system-1-pg6s.onrender.com/tasks?page=${page}&limit=6`
                 );
 
                 const data = await res.json();
@@ -64,7 +64,7 @@ export default function DashboardPage() {
                 toast.error("Please login again");
                 return;
             }
-            const res = await apiRequest("http://localhost:8080/tasks", {
+            const res = await apiRequest("https://task-management-system-1-pg6s.onrender.com/tasks", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -211,7 +211,7 @@ export default function DashboardPage() {
                                                     const token = localStorage.getItem("accessToken");
 
                                                     const res = await apiRequest(
-                                                        `http://localhost:8080/tasks/${task.id}`,
+                                                        `https://task-management-system-1-pg6s.onrender.com/tasks/${task.id}`,
                                                         {
                                                             method: "PATCH",
                                                             headers: {
@@ -267,7 +267,7 @@ export default function DashboardPage() {
                                             const token = localStorage.getItem("accessToken");
 
                                             const res = await apiRequest(
-                                                `http://localhost:8080/tasks/${task.id}/toggle`,
+                                                `https://task-management-system-1-pg6s.onrender.com/tasks/${task.id}/toggle`,
                                                 {
                                                     method: "PATCH",
                                                     headers: {
@@ -316,7 +316,7 @@ export default function DashboardPage() {
                                             const token = localStorage.getItem("accessToken");
 
                                             const res = await apiRequest(
-                                                `http://localhost:8080/tasks/${task.id}`,
+                                                `https://task-management-system-1-pg6s.onrender.com/tasks/${task.id}`,
                                                 {
                                                     method: "DELETE",
                                                     headers: {
