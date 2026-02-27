@@ -1,4 +1,6 @@
-{
+{ "engines": {
+    "node": ">=18"
+  },
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
