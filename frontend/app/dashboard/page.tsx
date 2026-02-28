@@ -31,7 +31,7 @@ export default function DashboardPage() {
         const fetchTasks = async (page = 1) => {
             try {
                 const res = await apiRequest(
-                    `${process.env.BACKEND_URL}/tasks?page=${page}&limit=6`
+                    `${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks?page=${page}&limit=6`
                 );
 
                 const data = await res.json();
@@ -64,7 +64,7 @@ export default function DashboardPage() {
                 toast.error("Please login again");
                 return;
             }
-            const res = await apiRequest(`${process.env.BACKEND_URL}/tasks`, {
+            const res = await apiRequest(`${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -211,7 +211,7 @@ export default function DashboardPage() {
                                                     const token = localStorage.getItem("accessToken");
 
                                                     const res = await apiRequest(
-                                                        `${process.env.BACKEND_URL}/tasks/${task.id}`,
+                                                        `${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks/${task.id}`,
                                                         {
                                                             method: "PATCH",
                                                             headers: {
@@ -267,7 +267,7 @@ export default function DashboardPage() {
                                             const token = localStorage.getItem("accessToken");
 
                                             const res = await apiRequest(
-                                                `${process.env.BACKEND_URL}/tasks/${task.id}/toggle`,
+                                                `${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks/${task.id}/toggle`,
                                                 {
                                                     method: "PATCH",
                                                     headers: {
@@ -316,7 +316,7 @@ export default function DashboardPage() {
                                             const token = localStorage.getItem("accessToken");
 
                                             const res = await apiRequest(
-                                                `${process.env.BACKEND_URL}/tasks/${task.id}`,
+                                                `${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks/${task.id}`,
                                                 {
                                                     method: "DELETE",
                                                     headers: {

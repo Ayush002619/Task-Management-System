@@ -16,7 +16,7 @@ export default function LoginPage() {
         e.preventDefault();
 
         try {
-            const res = await apiRequest(`${process.env.BACKEND_URL}/auth/login`, {
+            const res = await apiRequest(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

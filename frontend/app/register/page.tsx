@@ -13,7 +13,7 @@ export default function RegisterPage() {
         e.preventDefault();
 
         try {
-            const res = await apiRequest(`${process.env.BACKEND_URL}/auth/register`, {
+            const res = await apiRequest(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
