@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { apiRequest } from "@/utils/api";
+import { apiRequest } from "../utils/api";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -16,7 +16,7 @@ export default function LoginPage() {
         e.preventDefault();
 
         try {
-            const res = await apiRequest(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`, {
+            const res = await apiRequest(`/auth/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

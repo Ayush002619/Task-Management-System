@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { apiRequest } from "@/utils/api";
+import { apiRequest } from "../utils/api";
 
 export default function RegisterPage() {
     const [email, setEmail] = useState("");
@@ -13,7 +13,7 @@ export default function RegisterPage() {
         e.preventDefault();
 
         try {
-            const res = await apiRequest(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register`, {
+            const res = await apiRequest(`/auth/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

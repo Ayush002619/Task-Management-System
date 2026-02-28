@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { apiRequest } from "@/utils/api";
+import { apiRequest } from "../utils/api";
 
 interface Task {
     id: number;
@@ -31,7 +31,7 @@ export default function DashboardPage() {
         const fetchTasks = async (page = 1) => {
             try {
                 const res = await apiRequest(
-                    `${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks?page=${page}&limit=6`
+                    `/tasks?page=${page}&limit=6`
                 );
 
                 const data = await res.json();
@@ -64,7 +64,7 @@ export default function DashboardPage() {
                 toast.error("Please login again");
                 return;
             }
-            const res = await apiRequest(`${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks`, {
+            const res = await apiRequest(`/tasks`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -211,7 +211,7 @@ export default function DashboardPage() {
                                                     const token = localStorage.getItem("accessToken");
 
                                                     const res = await apiRequest(
-                                                        `${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks/${task.id}`,
+                                                        `/tasks/${task.id}`,
                                                         {
                                                             method: "PATCH",
                                                             headers: {
@@ -267,7 +267,7 @@ export default function DashboardPage() {
                                             const token = localStorage.getItem("accessToken");
 
                                             const res = await apiRequest(
-                                                `${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks/${task.id}/toggle`,
+                                                `/tasks/${task.id}/toggle`,
                                                 {
                                                     method: "PATCH",
                                                     headers: {
@@ -316,7 +316,7 @@ export default function DashboardPage() {
                                             const token = localStorage.getItem("accessToken");
 
                                             const res = await apiRequest(
-                                                `${process.env.NEXT_PUBLIC_BACKEND_URL}/tasks/${task.id}`,
+                                                `/tasks/${task.id}`,
                                                 {
                                                     method: "DELETE",
                                                     headers: {

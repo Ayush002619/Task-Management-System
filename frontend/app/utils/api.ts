@@ -1,40 +1,37 @@
+const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
 export const apiRequest = async (
-    url: string,
+    endpoint: string,
     options: RequestInit = {}
 ) => {
-    let token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem("accessToken");
 
-    let res = await fetch(url, {
+    const res = await fetch(`${BASE_URL}${endpoint}`, {
         ...options,
         headers: {
+            "Content-Type": "application/json",
             ...(options.headers || {}),
-            Authorization: `Bearer ${token}`,
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
     });
 
-    // If access token expired
     if (res.status === 401) {
         const refreshToken = localStorage.getItem("refreshToken");
 
-        const refreshRes = await fetch(
-            `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/refresh`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ refreshToken }),
-            }
-        );
+        const refreshRes = await fetch(`${BASE_URL}/auth/refresh`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ refreshToken }),
+        });
 
         if (refreshRes.ok) {
             const data = await refreshRes.json();
             localStorage.setItem("accessToken", data.accessToken);
 
-            // retry original request
-            return fetch(url, {
+            return fetch(`${BASE_URL}${endpoint}`, {
                 ...options,
                 headers: {
+                    "Content-Type": "application/json",
                     ...(options.headers || {}),
                     Authorization: `Bearer ${data.accessToken}`,
                 },
