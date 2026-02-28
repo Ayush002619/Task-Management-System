@@ -6,7 +6,7 @@ import taskRoutes from "./routes/task";
 
 const app = express();
 app.use(cors({
-    origin: "https://task-management-system-2-xq8r.onrender.com/",
+    origin: "https://task-management-system-2-xq8r.onrender.com",
     credentials: true
 }));
 app.use(express.json());
