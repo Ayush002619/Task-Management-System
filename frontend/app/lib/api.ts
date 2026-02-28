@@ -1,4 +1,4 @@
-const BASE_URL = "https://task-management-system-1-pg6s.onrender.com";
+const BASE_URL = process.env.BACKEND_URL;
 
 export const apiRequest = async (
     endpoint: string,

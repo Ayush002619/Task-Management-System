@@ -17,7 +17,7 @@ export const apiRequest = async (
         const refreshToken = localStorage.getItem("refreshToken");
 
         const refreshRes = await fetch(
-            "http://localhost:8080/auth/refresh",
+            `${process.env.BACKEND_URL}/auth/refresh`,
             {
                 method: "POST",
                 headers: {

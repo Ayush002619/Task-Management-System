@@ -13,7 +13,7 @@ export default function RegisterPage() {
         e.preventDefault();
 
         try {
-            const res = await apiRequest("https://task-management-system-1-pg6s.onrender.com/auth/register", {
+            const res = await apiRequest(`${process.env.BACKEND_URL}/auth/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
